@@ -103,15 +103,15 @@ const centralamerica = async (req, resp) => {
   }
 };
 
-// const india = async (req, resp) => {
-//   try {
-//     let table = await connection();
-//     let response = await table.find({ country: 'India' }).toArray();
-//     resp.status(200).json({ msg: 'India sent', data: response });
-//   } catch (err) {
-//     resp.status(400).json({ msg: 'err' });
-//   }
-// };
+const india = async (req, resp) => {
+  try {
+    let table = await connection();
+    let response = await table.find({ country: 'India' }).toArray();
+    resp.status(200).json({ msg: 'India sent', data: response });
+  } catch (err) {
+    resp.status(400).json({ msg: 'err' });
+  }
+};
 
 const usa = async (req, resp) => {
   try {
@@ -154,40 +154,6 @@ const technological = async (req, resp) => {
     resp.status(400).json({ msg: 'err' });
   }
 };
-
-const test = async (req, res) => {
-  await within(india, res, 7000);
-};
-
-async function within(fn, res, duration) {
-  const id = setTimeout(
-    () =>
-      res.json({
-        message: 'There was an error with the upstream service!',
-      }),
-    duration
-  );
-
-  try {
-    let data = await fn();
-    clearTimeout(id);
-    res.json(data);
-  } catch (e) {
-    res.status(500).json({ message: e.message });
-  }
-}
-
-async function india(req, resp) {
-  // return let india = async (req, resp) => {
-  try {
-    let table = await connection();
-    let response = await table.find({ country: 'India' }).toArray();
-    resp.status(200).json({ msg: 'India sent', data: response });
-  } catch (err) {
-    resp.status(400).json({ msg: 'err' });
-  }
-}
-// }
 
 module.exports = {
   average,
