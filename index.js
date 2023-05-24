@@ -9,6 +9,10 @@ app.use(cors());
 app.use('/', Routes);
 connection();
 
+app.get('/get', (req, resp) => {
+  resp.send('working fine');
+});
+
 app.listen(PORT, () => {
   console.log('server is live');
 });
