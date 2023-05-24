@@ -10,7 +10,7 @@ app.use('/', Routes);
 connection();
 
 app.get('/get', (req, resp) => {
-  resp.send('working fine');
+  resp.json('working fine');
 });
 
 app.listen(PORT, () => {
